@@ -1,0 +1,9 @@
+向量定义
+	struct abc{
+		int age;
+		chat *name[20];
+		...
+		char placeholder[0];
+	}
+	在结构体左右定义一个大小为0的向量，sizeof的大小不包含最后一个数组的大小。
+	初始化的时候可以动态分配大小以扩充结构体的容量
