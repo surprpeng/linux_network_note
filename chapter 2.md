@@ -1,3 +1,4 @@
+# SKB_BUFF
 struct sk_buff
 {
 // 所有的sk_buff 都由一个双向链表，将所有的sk_buff穿起来
@@ -51,3 +52,4 @@ spinlock_t lock; // 防止对表并发访问
 
 function:
 
+# net_device
