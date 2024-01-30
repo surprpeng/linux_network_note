@@ -53,3 +53,54 @@ spinlock_t lock; // 防止对表并发访问
 function:
 
 # net_device
+变量可分为以下几个类型：
+* 配置
+* 统计数据
+* 设备状态
+* 列表管理
+* 流量管理
+* 功能专用
+* 通用
+* 函数指针
+  ## 标识符
+```
+  ifindex/iflink/dev_id
+```
+## 配置
+* name(e.g. eht0)
+* mem_start/mem_end: 与内核沟通所使用的共享内存
+* base_addr: 加载时用户配置
+* irq: 与内核对话用的中断编号
+* if_port: 端口类型
+* flags/gflags/priv_flags: 表示开启的功能，状态， ifconfig可进行查看，
+* mtu: 最大传输单元
+* type: (e.g. ethernet/frame relay)
+* promiscuity： 混杂模式，可以监听所有包， 类似sniffer
+## 统计数据
+本身没有统计字段，而是提供您一个priv指针，供驱动程序自己定义数据结构。
+## 设备状态
+* state: network queue state, e.g. __LINK_STATE_XOFF means stop queue
+* trans_start: 表示最近一个帧传输启动的时间
+* last_rx: 最后一个封包到达的时间
+## 列表管理
+net_device 被放到一个全局列表 和两个hash表中
+* next： 指向全局列表中的下一个
+* name_hlist:
+* index_hlist:
+## 链路层多播
+在L2层头部加入特定的信息或使用特定的地址，表示多播的传送
+* mc_list: 设备会为其监听的每个链路层多播地址保存一个dev_mc_list,
+* mc_count: mc_list的长度
+## 流量管理
+QOS or fair queueing
+* net_device *next_sched
+* Qdisc *qdisc
+* qdisc_sleeping
+* qdisc_ingress
+* qdisc_list: 用于管理入口和出口的封包队列，以及不通cpu对此设别的访问
+## 通用
+* refcnt: 引用计数
+* watchdog_timer
+* poll/poll_list/quota/weight: NAPI功能使用
+* 
+
