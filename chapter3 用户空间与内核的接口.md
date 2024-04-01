@@ -38,6 +38,11 @@ static int arp_seq_open(struct inode *inode, struct file *file)
 	rc = seq_open(file, &arp_seq_ops);
 }
 ```
-page 27
+sysctl: 目录/proc/sys
+* 看到的文件实际上是一个内核变量
+* * 以ctl_table结构定义一个文件和目录
+  ![image](https://github.com/surprpeng/linux_network_note/assets/54309576/86e85567-d2a9-49f0-ba4f-16d11c7e317e)
+* procname 是
+
 
   
